@@ -1,0 +1,43 @@
+html {
+  body {
+    @keyframes shake {
+      0% {
+        transform: rotate(0deg);
+      }
+      20% {
+        transform: rotate(0deg);
+      }
+      30% {
+        transform: rotate(5deg);
+      }
+      40% {
+        transform: rotate(-5deg);
+      }
+      50% {
+        transform: rotate(0deg);
+      }
+    }
+
+    input#new-task {
+      width: 318px;
+      &:focus {
+        border: 1px solid grey;
+      }
+    }
+
+    p > button {
+      &:hover {
+        color: #0fc57c;
+      }
+    }
+
+    input#new-task.invalid-task {
+      border: 1px solid red;
+    }
+
+    input#new-task.shake {
+      display: inline-block;
+      animation: shake 1s ease-in;
+    }
+  }
+}

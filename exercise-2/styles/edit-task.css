@@ -1,0 +1,28 @@
+html body ul li input[type="checkbox"] {
+  visibility: visible;
+}
+
+html body ul li input[type="checkbox"]:focus + label {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+html body ul li input[type="text"] {
+  display: none;
+}
+
+html body ul li input[type="text"]:focus {
+  border: 1px solid grey;
+}
+
+html body ul li.editMode input[type="text"] {
+  display: block;
+}
+
+html body ul li.editMode input[type="text"]:focus {
+  border: 1px solid grey;
+}
+
+html body ul li.editMode label {
+  display: none;
+}
+/*# sourceMappingURL=edit-task.css.map */

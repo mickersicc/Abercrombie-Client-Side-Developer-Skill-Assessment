@@ -1,0 +1,57 @@
+@import "./completed.scss";
+@import "./edit-task.scss";
+@import "./heading.scss";
+@import "./new-task.scss";
+@import "./task-list.scss";
+
+html {
+  body {
+    background: #ffffff;
+    color: #333;
+    font-family: Lato, sans-serif;
+
+    .container {
+      display: block;
+      width: 375px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    ul {
+      margin: 0px;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+    }
+
+    li,
+    h3 {
+      clear: both;
+      list-style: none;
+    }
+
+    input,
+    button {
+      outline: none;
+    }
+
+    button {
+      background: none;
+      border: 0px;
+      color: #888888;
+      font-size: 15px;
+      width: 60px;
+      margin: 10px 0 0;
+      font-family: Lato, sans-serif;
+      cursor: pointer;
+      &:focus {
+        border: 1px solid grey;
+      }
+      &:hover {
+        color: #333;
+      }
+    }
+  }
+}

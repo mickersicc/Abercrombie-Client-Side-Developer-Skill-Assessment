@@ -1,0 +1,34 @@
+html {
+  body {
+    ul {
+      li {
+        input[type="checkbox"] {
+          visibility: visible;
+          &:focus + label {
+            background-color: rgba(0,0,0,.05);
+          }
+        }
+      }
+
+      li {
+        input[type="text"] {
+          display: none;
+          &:focus {
+            border: 1px solid grey;
+          }
+        }
+      }
+
+      li.editMode input[type="text"] {
+        display: block;
+        &:focus {
+          border: 1px solid grey;
+        }
+      }
+
+      li.editMode label {
+        display: none;
+      }
+    }
+  }
+}

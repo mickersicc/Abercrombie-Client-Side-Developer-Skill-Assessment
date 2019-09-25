@@ -1,0 +1,10 @@
+html {
+  body {
+    #completed-tasks {
+      label {
+        text-decoration: line-through;
+        color: #888;
+      }
+    }
+  }
+}

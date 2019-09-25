@@ -1,0 +1,68 @@
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  20% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  30% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+  }
+  40% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+  50% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@keyframes shake {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  20% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  30% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+  }
+  40% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+  50% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+html body input#new-task {
+  width: 318px;
+}
+
+html body input#new-task:focus {
+  border: 1px solid grey;
+}
+
+html body p > button:hover {
+  color: #0fc57c;
+}
+
+html body input#new-task.invalid-task {
+  border: 1px solid red;
+}
+
+html body input#new-task.shake {
+  display: inline-block;
+  -webkit-animation: shake 1s ease-in;
+          animation: shake 1s ease-in;
+}
+/*# sourceMappingURL=new-task.css.map */
