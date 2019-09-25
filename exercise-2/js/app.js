@@ -5,11 +5,14 @@
   const incompleteTasksHolder = document.getElementById("incomplete-tasks");
   const completedTasksHolder = document.getElementById("completed-tasks");
 
-  const data = [
+  const initialData = [
     { editMode: false, value: 'Pay Bills', label: 'Pay Bills', complete: false },
     { editMode: true, value: 'Go Shopping', label: 'Go Shopping', complete: false },
     { editMode: false, value: 'See the Doctor', label: 'See the Doctor', complete: true },
   ];
+
+  const sessionData = session.getTasks();
+  let data = sessionData.length ? sessionData : initialData;
 
   const createNewTaskElement = function (taskString, arr) {
     let listItem = document.createElement("li");
@@ -57,10 +60,11 @@
       incompleteTasksHolder.appendChild(listItem);
       bindTaskEvents(listItem, taskCompleted);
       taskInput.value = "";
+      updateData();
     }
   };
 
-  const editTask = function() {
+  const editTask = function () {
     const listItem = this.parentNode;
     const editInput = listItem.querySelectorAll("input[type=text")[0];
     const label = listItem.querySelector("label");
@@ -76,24 +80,28 @@
     }
 
     listItem.classList.toggle("editMode");
+    updateData();
   };
 
   const deleteTask = function () {
     const listItem = this.parentNode;
     const ul = listItem.parentNode;
     ul.removeChild(listItem);
+    updateData();
   };
 
   const taskCompleted = function () {
     const listItem = this.parentNode;
     completedTasksHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskIncomplete);
+    updateData();
   };
 
   const taskIncomplete = function () {
     const listItem = this.parentNode;
     incompleteTasksHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskCompleted);
+    updateData();
   };
 
   const bindTaskEvents = (taskListItem, checkBoxEventHandler, cb) => {
@@ -110,10 +118,40 @@
     checkBox.onchange = checkBoxEventHandler;
   };
 
+  const updateData = () => {
+    const incompleteTasks = incompleteTasksHolder.querySelectorAll('li');
+    const completeTasks = completedTasksHolder.querySelectorAll('li');
+    let dataToSave = [];
+
+    for (let i = 0; i < incompleteTasks.length; i++) {
+      const label = incompleteTasks[i].children[1];
+      const classList = incompleteTasks[i].classList;
+
+      dataToSave.push({
+        editMode: (classList.contains('editMode') ? true : false),
+        value: label.innerText, label: label.innerText, complete: false
+      })
+    }
+    for (let i = 0; i < completeTasks.length; i++) {
+      const label = incompleteTasks[i].children[1];
+      const classList = incompleteTasks[i].classList;
+
+      dataToSave.push({
+        editMode: (classList.contains('editMode') ? true : false),
+        value: label.innerText, label: label.innerText, complete: true
+      })
+    }
+
+    session.setTasks(dataToSave);
+  }
 
   data.forEach((item) => {
     let listItem = createNewTaskElement(item.value, { editMode: item.editMode });
-    incompleteTasksHolder.appendChild(listItem);
+    if (item.complete) {
+      completedTasksHolder.appendChild(listItem);
+    } else {
+      incompleteTasksHolder.appendChild(listItem);
+    }
     bindTaskEvents(listItem, taskCompleted);
   });
 

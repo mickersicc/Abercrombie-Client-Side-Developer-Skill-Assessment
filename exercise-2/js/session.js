@@ -5,7 +5,7 @@ const Session = () => {
         localStorage.setItem('tasks', JSON.stringify(tasks));
     };
 
-    session.getUsers = () => {
+    session.getTasks = () => {
         const localData = localStorage.getItem('tasks');
         const tasks = JSON.parse(localData);
         return tasks ? tasks : [];
