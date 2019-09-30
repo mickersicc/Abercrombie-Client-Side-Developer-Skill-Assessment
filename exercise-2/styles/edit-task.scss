@@ -5,7 +5,7 @@ html {
         input[type="checkbox"] {
           visibility: visible;
           &:focus + label {
-            background-color: rgba(0,0,0,.05);
+            background-color: rgba(0, 0, 0, 0.05);
           }
         }
       }
