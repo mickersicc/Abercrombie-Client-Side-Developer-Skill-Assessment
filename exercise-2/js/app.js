@@ -19,31 +19,14 @@
     if (arr && arr.editMode) {
       listItem.classList.add('editMode');
     }
-    let checkBox = document.createElement("input");
-    let label = document.createElement("label");
-    let editInput = document.createElement("input");
-    let editButton = document.createElement("button");
-    if (arr && arr.editMode) {
-      editInput.value = taskString;
-      editButton.innerText = "Save";
-      editButton.className = "save";
-    } else {
-      editButton.innerText = "Edit";
-      editButton.className = "edit";
-    }
-    deleteButton = document.createElement("button");
 
-    checkBox.type = "checkbox";
-    editInput.type = "text";
-    deleteButton.innerText = "Delete";
-    deleteButton.className = "delete";
-    label.innerText = taskString;
-
-    listItem.appendChild(checkBox);
-    listItem.appendChild(label);
-    listItem.appendChild(editInput);
-    listItem.appendChild(editButton);
-    listItem.appendChild(deleteButton);
+    listItem.innerHTML = `
+      <input type="checkbox">
+      <label>${taskString}</label>
+      <input type="text" value="${taskString}"></input>
+      <button class="${(arr && arr.editMode) ? 'save' : 'edit'}">${(arr && arr.editMode) ? 'Save' : 'Edit'}</button>
+      <button class="delete">Delete</button>
+      `;
 
     return listItem;
   };
